@@ -1,5 +1,5 @@
 import { useState } from "react"
-
+import { TextField, Button, Checkbox, FormControlLabel, Stack, Alert, Paper } from "@mui/material"
 
 interface Props {
     onAdd: (data: {
@@ -8,13 +8,14 @@ interface Props {
         completed: boolean
     }) => void
 }
+
 export function FitnessForm({ onAdd }: Props) {
     const [activity, setActivity] = useState("")
     const [duration, setDuration] = useState("")
     const [completed, setCompleted] = useState(false)
     const [error, setError] = useState<string | null>(null)
 
-    const handleSubmit: React.SubmitEventHandler<HTMLFormElement> = (e) => {
+    const handleSubmit: React.FormEventHandler<HTMLFormElement> = (e) => {
         e.preventDefault()
 
         if (activity.trim() === "") {
@@ -29,48 +30,60 @@ export function FitnessForm({ onAdd }: Props) {
         }
 
         setError(null)
-        onAdd({ activity: activity.trim(), duration: parsedDuration, completed })
+
+        onAdd({
+            activity: activity.trim(),
+            duration: parsedDuration,
+            completed,
+        })
+
         setActivity("")
         setDuration("")
         setCompleted(false)
     }
 
     return (
-        <form onSubmit={handleSubmit}>
-            {error && <p style={{ color: "red" }}>{error}</p>}
+        <Paper sx={{ p: 2 }}>
+            <form onSubmit={handleSubmit}>
+                <Stack spacing={2}>
+                    {error && <Alert severity="error">{error}</Alert>}
 
-            <div>
-                <label htmlFor="activity">Activity</label>
-                <input
-                    id="activity"
-                    type="text"
-                    value={activity}
-                    onChange={(e) => setActivity(e.target.value)}
-                />
-            </div>
-
-            <div>
-                <label htmlFor="duration">Duration</label>
-                <input
-                    id="duration"
-                    type="text"
-                    value={duration}
-                    onChange={(e) => setDuration(e.target.value)}
-                />
-            </div>
-
-            <div>
-                <label>
-                    <input
-                        type="checkbox"
-                        checked={completed}
-                        onChange={(e) => setCompleted(e.target.checked)}
+                    <TextField
+                        label="Activity"
+                        value={activity}
+                        onChange={(e) => setActivity(e.target.value)}
+                        fullWidth
                     />
-                    {" "}Mark as completed
-                </label>
-            </div>
 
-            <button type="submit">Add Activity</button>
-        </form>
+                    <TextField
+                        label="Duration (minutes)"
+                        type="number"
+                        value={duration}
+                        onChange={(e) => setDuration(e.target.value)}
+                        fullWidth
+                        inputProps={{ style: { MozAppearance: "textfield" } }}
+                        sx={{
+                            "& input::-webkit-outer-spin-button, & input::-webkit-inner-spin-button": {
+                                display: "none",
+                            },
+                        }}
+                    />
+
+                    <FormControlLabel
+                        control={
+                            <Checkbox
+                                checked={completed}
+                                onChange={(e) => setCompleted(e.target.checked)}
+                            />
+                        }
+                        label="Mark as completed"
+                    />
+
+                    <Button type="submit" variant="contained" color="secondary">
+                        Add Activity
+                    </Button>
+                </Stack>
+            </form>
+        </Paper>
     )
 }

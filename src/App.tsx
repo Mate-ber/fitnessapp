@@ -3,6 +3,11 @@ import { FitnessForm } from "./components/FitnessForm"
 import { ActivityList } from "./components/ActivityList"
 import type { Activity } from "./types"
 import { getTotalDuration, getPendingDuration, getMotivationalMessage } from "./utils"
+import { Container, Typography, Box, Paper } from "@mui/material"
+import FitnessCenterIcon from "@mui/icons-material/FitnessCenter"
+import CheckCircleIcon from "@mui/icons-material/CheckCircle"
+import TimerIcon from "@mui/icons-material/Timer"
+import PendingIcon from "@mui/icons-material/Pending"
 
 function App() {
     const [activities, setActivities] = useState<Activity[]>([])
@@ -24,6 +29,7 @@ function App() {
             ...data,
             id: Date.now(),
         }
+
         setActivities((prev) => [newActivity, ...prev])
     }
 
@@ -40,26 +46,44 @@ function App() {
     }
 
     return (
-        <main style={{ padding: "2rem" }}>
-            <h1>Fitness Tracker</h1>
+        <Box
+            sx={{
+                minHeight: "100vh",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                bgcolor: "background.default",
+            }}
+        >
+            <Container maxWidth="sm" sx={{ mt: 4 }}>
+                <Box sx={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 1, mb: 1 }}>
+                    <FitnessCenterIcon color="primary" />
+                    <Typography variant="h4" color="primary" gutterBottom align="center">
+                        Fitness Tracker
+                    </Typography>
+                </Box>
 
-            <FitnessForm onAdd={addActivity} />
+                <FitnessForm onAdd={addActivity} />
 
-            <div style={{ marginTop: "1.5rem", padding: "1rem", border: "1px solid #555", borderRadius: "8px", maxWidth: 400 }}>
-                <p style={{ margin: 0 }}>{stats.message}</p>
-                <p style={{ margin: "0.5rem 0 0" }}>
-                    {stats.completedCount} min done &nbsp;|&nbsp;
-                    {stats.pendingCount} min pending &nbsp;|&nbsp;
-                    {stats.totalDuration} min total
-                </p>
-            </div>
+                <Paper elevation={6} sx={{ mt: 3, p: 4, textAlign: "center"}}>
+                    <Typography>{stats.message}</Typography>
 
-            <ActivityList
-                activities={activities}
-                onDelete={deleteActivity}
-                onToggle={toggleCompleted}
-            />
-        </main>
+                    <Typography sx={{ mt: 1, display: "flex", alignItems: "center", justifyContent: "center", gap: 1 }}>
+                        <CheckCircleIcon fontSize="small" color="primary" /> {stats.completedCount} min done {"| "}
+                        <PendingIcon fontSize="small" color="secondary" /> {stats.pendingCount} min pending {"| "}
+                        <TimerIcon fontSize="small" /> {stats.totalDuration} min total
+                    </Typography>
+                </Paper>
+
+                <Box sx={{ mt: 3 }}>
+                    <ActivityList
+                        activities={activities}
+                        onDelete={deleteActivity}
+                        onToggle={toggleCompleted}
+                    />
+                </Box>
+            </Container>
+        </Box>
     )
 }
 

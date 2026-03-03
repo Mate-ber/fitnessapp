@@ -1,4 +1,7 @@
 import type { Activity } from "../types"
+import { List, ListItem, ListItemText, IconButton, Checkbox, Paper, Typography, Box } from "@mui/material"
+import DeleteIcon from "@mui/icons-material/Delete"
+import TimerIcon from "@mui/icons-material/Timer"
 
 interface Props {
     activities: Activity[]
@@ -8,44 +11,42 @@ interface Props {
 
 export function ActivityList({ activities, onDelete, onToggle }: Props) {
     if (activities.length === 0) {
-        return <p>No activities yet. Add one above!</p>
+        return <Typography sx={{ mt: 3 }}>No activities yet. Add one above!</Typography>
     }
 
     return (
-        <ul style={{ listStyle: "none", padding: 0, marginTop: "2rem", maxWidth: 400 }}>
-            {activities.map((a) => (
-                <li
-                    key={a.id}
-                    style={{
-                        display: "flex",
-                        justifyContent: "space-between",
-                        alignItems: "center",
-                        padding: "0.75rem 1rem",
-                        marginBottom: "0.5rem",
-                        border: "1px solid #444",
-                        borderRadius: "8px",
-                        opacity: a.completed ? 0.6 : 1,
-                    }}
-                >
-                    <div>
-                        <strong style={{ textDecoration: a.completed ? "line-through" : "none" }}>
-                            {a.activity}
-                        </strong>
-                        <span style={{ marginLeft: "0.5rem", fontSize: "0.85rem", color: "#aaa" }}>
-                            {a.duration} min
-                        </span>
-                    </div>
+        <Paper sx={{ mt: 3 }}>
+            <List>
+                {activities.map((a) => (
+                    <ListItem
+                        key={a.id}
+                        secondaryAction={
+                            <IconButton edge="end" onClick={() => onDelete(a.id)}>
+                                <DeleteIcon />
+                            </IconButton>
+                        }
+                    >
+                        <Checkbox
+                            checked={a.completed}
+                            onChange={() => onToggle(a.id)}
+                        />
 
-                    <div style={{ display: "flex", gap: "0.5rem" }}>
-                        <button type="button" onClick={() => onToggle(a.id)}>
-                            {a.completed ? "Undo" : "Done"}
-                        </button>
-                        <button type="button" onClick={() => onDelete(a.id)}>
-                            Delete
-                        </button>
-                    </div>
-                </li>
-            ))}
-        </ul>
+                        <ListItemText
+                            primary={a.activity}
+                            secondary={
+                                <Box component="span" sx={{ display: "flex", alignItems: "center", gap: 0.5 }}>
+                                    <TimerIcon sx={{ fontSize: 14 }} />
+                                    {a.duration} min
+                                </Box>
+                            }
+                            sx={{
+                                textDecoration: a.completed ? "line-through" : "none",
+                                opacity: a.completed ? 0.6 : 1,
+                            }}
+                        />
+                    </ListItem>
+                ))}
+            </List>
+        </Paper>
     )
 }
