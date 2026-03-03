@@ -1,4 +1,4 @@
-import { useState } from "react"
+import React, { useState } from "react"
 import { TextField, Button, Checkbox, FormControlLabel, Stack, Alert, Paper } from "@mui/material"
 
 interface Props {
@@ -15,7 +15,7 @@ export function FitnessForm({ onAdd }: Props) {
     const [completed, setCompleted] = useState(false)
     const [error, setError] = useState<string | null>(null)
 
-    const handleSubmit: React.FormEventHandler<HTMLFormElement> = (e) => {
+    const handleSubmit = (e: React.SyntheticEvent) => {
         e.preventDefault()
 
         if (activity.trim() === "") {
@@ -61,12 +61,6 @@ export function FitnessForm({ onAdd }: Props) {
                         value={duration}
                         onChange={(e) => setDuration(e.target.value)}
                         fullWidth
-                        inputProps={{ style: { MozAppearance: "textfield" } }}
-                        sx={{
-                            "& input::-webkit-outer-spin-button, & input::-webkit-inner-spin-button": {
-                                display: "none",
-                            },
-                        }}
                     />
 
                     <FormControlLabel
