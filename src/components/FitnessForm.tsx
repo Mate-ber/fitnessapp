@@ -1,83 +1,91 @@
-import React, { useState } from "react"
-import { TextField, Button, Checkbox, FormControlLabel, Stack, Alert, Paper } from "@mui/material"
+import React, { useState } from "react";
+import {
+  TextField,
+  Button,
+  Checkbox,
+  FormControlLabel,
+  Stack,
+  Alert,
+  Paper,
+} from "@mui/material";
 
 interface Props {
-    onAdd: (data: {
-        activity: string
-        duration: number
-        completed: boolean
-    }) => void
+  onAdd: (data: {
+    activity: string;
+    duration: number;
+    completed: boolean;
+  }) => void;
 }
 
 export function FitnessForm({ onAdd }: Props) {
-    const [activity, setActivity] = useState("")
-    const [duration, setDuration] = useState("")
-    const [completed, setCompleted] = useState(false)
-    const [error, setError] = useState<string | null>(null)
+  const [activity, setActivity] = useState("");
+  const [duration, setDuration] = useState("");
+  const [completed, setCompleted] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
-    const handleSubmit = (e: React.SyntheticEvent) => {
-        e.preventDefault()
+  const handleSubmit = (e: React.SyntheticEvent) => {
+    e.preventDefault();
 
-        if (activity.trim() === "") {
-            setError("Activity name cannot be empty.")
-            return
-        }
-
-        const parsedDuration = Number(duration)
-        if (!duration || parsedDuration <= 0 || !Number.isFinite(parsedDuration)) {
-            setError("Duration must be a positive number.")
-            return
-        }
-
-        setError(null)
-
-        onAdd({
-            activity: activity.trim(),
-            duration: parsedDuration,
-            completed,
-        })
-
-        setActivity("")
-        setDuration("")
-        setCompleted(false)
+    if (activity.trim() === "") {
+      setError("Activity name cannot be empty.");
+      return;
     }
 
-    return (
-        <Paper sx={{ p: 2 }}>
-            <form onSubmit={handleSubmit}>
-                <Stack spacing={2}>
-                    {error && <Alert severity="error">{error}</Alert>}
+    const parsedDuration = Number(duration);
+    if (!duration || parsedDuration <= 0 || !Number.isFinite(parsedDuration)) {
+      setError("Duration must be a positive number.");
+      return;
+    }
 
-                    <TextField
-                        label="Activity"
-                        value={activity}
-                        onChange={(e) => setActivity(e.target.value)}
-                        fullWidth
-                    />
+    setError(null);
 
-                    <TextField
-                        label="Duration (minutes)"
-                        type="number"
-                        value={duration}
-                        onChange={(e) => setDuration(e.target.value)}
-                        fullWidth
-                    />
+    onAdd({
+      activity: activity.trim(),
+      duration: parsedDuration,
+      completed,
+    });
 
-                    <FormControlLabel
-                        control={
-                            <Checkbox
-                                checked={completed}
-                                onChange={(e) => setCompleted(e.target.checked)}
-                            />
-                        }
-                        label="Mark as completed"
-                    />
+    setActivity("");
+    setDuration("");
+    setCompleted(false);
+  };
 
-                    <Button type="submit" variant="contained" color="secondary">
-                        Add Activity
-                    </Button>
-                </Stack>
-            </form>
-        </Paper>
-    )
+  return (
+    <Paper sx={{ p: 2 }}>
+      <form onSubmit={handleSubmit}>
+        <Stack spacing={2}>
+          {error && <Alert severity="error">{error}</Alert>}
+
+          <TextField
+            label="Activity"
+            value={activity}
+            onChange={(e) => setActivity(e.target.value)}
+            fullWidth
+          />
+
+          <TextField
+            label="Duration (minutes)"
+            type="number"
+            value={duration}
+            onChange={(e) => setDuration(e.target.value)}
+            fullWidth
+          />
+
+          <FormControlLabel
+            control={
+              <Checkbox
+                checked={completed}
+                onChange={(e) => setCompleted(e.target.checked)}
+              />
+            }
+            label="Mark as completed"
+          />
+
+          <Button type="submit" variant="contained" color="secondary">
+            Add Activity
+          </Button>
+        </Stack>
+      </form>
+    </Paper>
+  );
 }
