@@ -1,9 +1,16 @@
-import { useState, useMemo, useCallback } from "react"
+import { useState, useMemo, useCallback, useEffect } from "react"
 import type { Activity } from "./types"
 import { getTotalDuration, getPendingDuration, getMotivationalMessage } from "./utils"
 
 export function useActivities() {
-    const [activities, setActivities] = useState<Activity[]>([])
+    const [activities, setActivities] = useState<Activity[]>(() => {
+        const saved = localStorage.getItem("activities")
+        return saved ? JSON.parse(saved) : []
+    })
+
+    useEffect(() => {
+        localStorage.setItem("activities", JSON.stringify(activities))
+    }, [activities])
 
     const stats = useMemo(() => {
         const total = getTotalDuration(activities)
