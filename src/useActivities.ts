@@ -12,6 +12,10 @@ export function useActivities() {
         localStorage.setItem("activities", JSON.stringify(activities))
     }, [activities])
 
+    const clearAll = useCallback(() => {
+        setActivities([])
+    }, [])
+
     const stats = useMemo(() => {
         const total = getTotalDuration(activities)
         const pending = getPendingDuration(activities)
@@ -42,5 +46,5 @@ export function useActivities() {
         )
     }, [])
 
-    return { activities, stats, addActivity, deleteActivity, toggleCompleted }
+    return { activities, stats, addActivity, deleteActivity, toggleCompleted, clearAll }
 }

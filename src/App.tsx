@@ -8,7 +8,7 @@ import TimerIcon from "@mui/icons-material/Timer"
 import PendingIcon from "@mui/icons-material/Pending"
 
 function App() {
-    const { activities, stats, addActivity, deleteActivity, toggleCompleted } = useActivities()
+    const { activities, stats, addActivity, deleteActivity, toggleCompleted, clearAll } = useActivities()
 
     return (
         <Box
@@ -45,6 +45,7 @@ function App() {
                         activities={activities}
                         onDelete={deleteActivity}
                         onToggle={toggleCompleted}
+                        onClearAll={clearAll}
                     />
                 </Box>
             </Container>
