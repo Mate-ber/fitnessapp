@@ -8,11 +8,10 @@ import {
   Paper,
   Typography,
   Box,
-  Button
+  Button,
 } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
 import TimerIcon from "@mui/icons-material/Timer";
-
 
 interface Props {
   activities: Activity[];
@@ -21,7 +20,12 @@ interface Props {
   onClearAll: () => void;
 }
 
-export function ActivityList({ activities, onDelete, onToggle, onClearAll }: Props) {
+export function ActivityList({
+  activities,
+  onDelete,
+  onToggle,
+  onClearAll,
+}: Props) {
   if (activities.length === 0) {
     return (
       <Typography sx={{ mt: 3 }}>No activities yet. Add one above!</Typography>
