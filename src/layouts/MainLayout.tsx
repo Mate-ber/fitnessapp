@@ -1,9 +1,20 @@
 import { Outlet, Link, useLocation } from "react-router";
-import { AppBar, Toolbar, Typography, Button, Box } from "@mui/material";
+import {
+  AppBar,
+  Toolbar,
+  Typography,
+  Button,
+  Box,
+  IconButton,
+} from "@mui/material";
 import FitnessCenterIcon from "@mui/icons-material/FitnessCenter";
+import LightModeIcon from "@mui/icons-material/LightMode";
+import DarkModeIcon from "@mui/icons-material/DarkMode";
+import { useTheme } from "../context/useTheme";
 
 export function MainLayout() {
   const location = useLocation();
+  const { mode, toggleTheme } = useTheme();
 
   return (
     <Box
@@ -25,7 +36,7 @@ export function MainLayout() {
           >
             Fitness Tracker
           </Typography>
-          <Box sx={{ display: "flex", gap: 1 }}>
+          <Box sx={{ display: "flex", gap: 1, alignItems: "center" }}>
             <Button
               component={Link}
               to="/"
@@ -44,6 +55,9 @@ export function MainLayout() {
             >
               About
             </Button>
+            <IconButton onClick={toggleTheme} color="inherit">
+              {mode === "dark" ? <LightModeIcon /> : <DarkModeIcon />}
+            </IconButton>
           </Box>
         </Toolbar>
       </AppBar>

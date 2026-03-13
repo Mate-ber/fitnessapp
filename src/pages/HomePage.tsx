@@ -4,7 +4,7 @@ import TimerIcon from "@mui/icons-material/Timer";
 import PendingIcon from "@mui/icons-material/Pending";
 import { FitnessForm } from "../components/FitnessForm";
 import { ActivityList } from "../components/ActivityList";
-import { useActivities } from "../useActivities";
+import { useActivities } from "../context/useActivitiesContext";
 import { QuoteCard } from "../components/QuoteCard";
 
 export function HomePage() {
