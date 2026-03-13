@@ -1,12 +1,5 @@
 import { createContext } from "react";
-import type { Activity } from "../types";
-
-type Stats = {
-  totalDuration: number;
-  completedCount: number;
-  pendingCount: number;
-  message: string;
-};
+import type { Activity, Stats } from "../../../types";
 
 export type ActivitiesContextValue = {
   activities: Activity[];

@@ -2,13 +2,11 @@ import { Suspense } from "react";
 import { ErrorBoundary } from "react-error-boundary";
 import { Paper, Typography, Box, CircularProgress } from "@mui/material";
 import FormatQuoteIcon from "@mui/icons-material/FormatQuote";
-import { useQuote } from "../api/useQuote.ts";
+import { useQuote } from "../api/useQuote";
 import { getErrorMessage } from "../api/quotes";
 
 const QuoteContent: React.FC = () => {
   const { data: quote } = useQuote();
-
-  if (!quote) return null;
 
   return (
     <Box sx={{ textAlign: "center" }}>

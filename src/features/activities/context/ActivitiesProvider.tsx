@@ -1,10 +1,10 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
-import type { Activity } from "../types";
+import type { Activity } from "../../../types";
 import {
   getTotalDuration,
   getPendingDuration,
   getMotivationalMessage,
-} from "../utils";
+} from "../utils/activityUtils";
 import { ActivitiesContext } from "./ActivitiesContext";
 
 export const ActivitiesProvider: React.FC<{ children: React.ReactNode }> = ({

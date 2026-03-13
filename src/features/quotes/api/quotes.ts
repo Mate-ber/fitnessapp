@@ -14,7 +14,7 @@ export async function getQuote(): Promise<Quote> {
   return data;
 }
 
-export function getErrorMessage(error: unknown) {
+export function getErrorMessage(error: unknown): string {
   if (error instanceof Error) {
     return `Error: ${error.message}`;
   }

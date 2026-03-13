@@ -2,7 +2,7 @@ import "@testing-library/jest-dom";
 import { render } from "@testing-library/react";
 import { MemoryRouter } from "react-router";
 import { describe, it } from "vitest";
-import { ActivitiesProvider } from "../context/ActivitiesProvider";
+import { ActivitiesProvider } from "../features/activities/context/ActivitiesProvider";
 import { StatsPage } from "./StatsPage";
 
 describe("StatsPage", () => {

@@ -4,3 +4,10 @@ export interface Activity {
   duration: number;
   completed: boolean;
 }
+
+export type Stats = {
+  totalDuration: number;
+  completedCount: number;
+  pendingCount: number;
+  message: string;
+};

@@ -3,7 +3,7 @@ import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { describe, it, expect, vi } from "vitest";
 import { ActivityList } from "./ActivityList";
-import type { Activity } from "../types";
+import type { Activity } from "../../../types";
 
 const activities: Activity[] = [
   { id: 1, activity: "Running", duration: 30, completed: false },

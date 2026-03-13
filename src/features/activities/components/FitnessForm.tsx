@@ -8,13 +8,10 @@ import {
   Alert,
   Paper,
 } from "@mui/material";
+import type { Activity } from "../../../types";
 
 interface Props {
-  onAdd: (data: {
-    activity: string;
-    duration: number;
-    completed: boolean;
-  }) => void;
+  onAdd: (data: Omit<Activity, "id">) => void;
 }
 
 export function FitnessForm({ onAdd }: Props) {
@@ -38,13 +35,7 @@ export function FitnessForm({ onAdd }: Props) {
     }
 
     setError(null);
-
-    onAdd({
-      activity: activity.trim(),
-      duration: parsedDuration,
-      completed,
-    });
-
+    onAdd({ activity: activity.trim(), duration: parsedDuration, completed });
     setActivity("");
     setDuration("");
     setCompleted(false);

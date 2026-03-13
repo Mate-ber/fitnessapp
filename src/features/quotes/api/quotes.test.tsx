@@ -2,8 +2,8 @@ import "@testing-library/jest-dom";
 import { render } from "@testing-library/react";
 import { describe, it, expect, vi, beforeEach } from "vitest";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { getQuote, getErrorMessage } from "./quotes";
-import { QuoteCard } from "../components/QuoteCard";
+import { getQuote, getErrorMessage } from "./quotes.ts";
+import { QuoteCard } from "../components/QuoteCard.tsx";
 
 const mockQuote = { id: 1, quote: "Test quote", author: "Test Author" };
 

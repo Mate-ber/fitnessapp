@@ -1,4 +1,4 @@
-import { Outlet, Link, useLocation } from "react-router";
+import { Outlet, NavLink } from "react-router";
 import {
   AppBar,
   Toolbar,
@@ -13,7 +13,6 @@ import DarkModeIcon from "@mui/icons-material/DarkMode";
 import { useTheme } from "../context/useTheme";
 
 export function MainLayout() {
-  const location = useLocation();
   const { mode, toggleTheme } = useTheme();
 
   return (
@@ -38,20 +37,23 @@ export function MainLayout() {
           </Typography>
           <Box sx={{ display: "flex", gap: 1, alignItems: "center" }}>
             <Button
-              component={Link}
+              component={NavLink}
               to="/"
-              color={
-                location.pathname === "/" || location.pathname === "/stats"
-                  ? "primary"
-                  : "inherit"
-              }
+              end={false}
+              sx={({ palette }) => ({
+                "&.active": { color: palette.primary.main },
+              })}
+              color="inherit"
             >
               Tracker
             </Button>
             <Button
-              component={Link}
+              component={NavLink}
               to="/about"
-              color={location.pathname === "/about" ? "primary" : "inherit"}
+              sx={({ palette }) => ({
+                "&.active": { color: palette.primary.main },
+              })}
+              color="inherit"
             >
               About
             </Button>
