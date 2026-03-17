@@ -16,6 +16,29 @@ A simple personal fitness tracker web app with React, TypeScript, and Material U
 - Goal setting and streak tracking
 - Push notifications for workout reminders
 
+## Architecture Overview
+
+```
+src/
+  features/
+    activities/       # Core tracker feature
+      components/     # ActivityList, FitnessForm
+      context/        # ActivitiesContext, ActivitiesProvider, useActivitiesContext
+      utils/          # activityUtils
+    quotes/           # Motivational quotes feature
+      api/            # getQuote, useQuote
+      components/     # QuoteCard
+  layouts/
+    MainLayout/       # Top navbar with theme toggle
+    SecondaryLayout/  # Tracker/Stats tab navigation
+  pages/
+    HomePage/         # Main tracker view
+    StatsPage/        # Progress breakdown
+    AboutPage/        # App info
+  context/
+    Theme/            # ThemeContext, ThemeProvider, useTheme
+  shared/             # Shared types
+```
 
 # Getting Started
 
