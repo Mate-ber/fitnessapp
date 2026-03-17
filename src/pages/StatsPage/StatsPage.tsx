@@ -1,14 +1,14 @@
-import { Typography, Paper, Stack, Divider } from "@mui/material";
-import CheckCircleIcon from "@mui/icons-material/CheckCircle";
-import TimerIcon from "@mui/icons-material/Timer";
-import PendingIcon from "@mui/icons-material/Pending";
-import { useActivities } from "../../features/activities/context/useActivitiesContext";
+import { Typography, Paper, Stack, Divider } from "@mui/material"
+import CheckCircleIcon from "@mui/icons-material/CheckCircle"
+import TimerIcon from "@mui/icons-material/Timer"
+import PendingIcon from "@mui/icons-material/Pending"
+import { useActivities } from "../../features/activities/context/useActivitiesContext"
 
 export function StatsPage() {
-  const { activities, stats } = useActivities();
+  const { activities, stats } = useActivities()
 
-  const completedActivities = activities.filter((a) => a.completed);
-  const pendingActivities = activities.filter((a) => !a.completed);
+  const completedActivities = activities.filter((a) => a.completed)
+  const pendingActivities = activities.filter((a) => !a.completed)
 
   return (
     <Stack spacing={3}>
@@ -53,5 +53,5 @@ export function StatsPage() {
         </Typography>
       </Paper>
     </Stack>
-  );
+  )
 }

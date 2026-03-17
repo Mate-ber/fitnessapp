@@ -1,11 +1,11 @@
-import { Container, Typography, Box, Paper } from "@mui/material";
-import CheckCircleIcon from "@mui/icons-material/CheckCircle";
-import TimerIcon from "@mui/icons-material/Timer";
-import PendingIcon from "@mui/icons-material/Pending";
-import { FitnessForm } from "../../features/activities/components/FitnessForm";
-import { ActivityList } from "../../features/activities/components/ActivityList";
-import { useActivities } from "../../features/activities/context/useActivitiesContext";
-import { QuoteCard } from "../../features/quotes/components/QuoteCard";
+import { Container, Typography, Box, Paper } from "@mui/material"
+import CheckCircleIcon from "@mui/icons-material/CheckCircle"
+import TimerIcon from "@mui/icons-material/Timer"
+import PendingIcon from "@mui/icons-material/Pending"
+import { FitnessForm } from "../../features/activities/components/FitnessForm"
+import { ActivityList } from "../../features/activities/components/ActivityList"
+import { useActivities } from "../../features/activities/context/useActivitiesContext"
+import { QuoteCard } from "../../features/quotes/components/QuoteCard"
 
 export function HomePage() {
   const {
@@ -15,7 +15,7 @@ export function HomePage() {
     deleteActivity,
     toggleCompleted,
     clearAll,
-  } = useActivities();
+  } = useActivities()
 
   return (
     <Container maxWidth="sm" sx={{ mt: 4 }}>
@@ -51,5 +51,5 @@ export function HomePage() {
         />
       </Box>
     </Container>
-  );
+  )
 }

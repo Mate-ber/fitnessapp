@@ -1,9 +1,9 @@
-import { Outlet, Link, useLocation } from "react-router";
-import { Box, Tabs, Tab, Container } from "@mui/material";
-import { ActivitiesProvider } from "../../features/activities/context/ActivitiesProvider";
+import { Outlet, Link, useLocation } from "react-router"
+import { Box, Tabs, Tab, Container } from "@mui/material"
+import { ActivitiesProvider } from "../../features/activities/context/ActivitiesProvider"
 
 export function SecondaryLayout() {
-  const location = useLocation();
+  const location = useLocation()
 
   return (
     <ActivitiesProvider>
@@ -17,5 +17,5 @@ export function SecondaryLayout() {
         <Outlet />
       </Container>
     </ActivitiesProvider>
-  );
+  )
 }

@@ -6,8 +6,8 @@ import {
   ListItem,
   ListItemText,
   Container,
-} from "@mui/material";
-import FitnessCenterIcon from "@mui/icons-material/FitnessCenter";
+} from "@mui/material"
+import FitnessCenterIcon from "@mui/icons-material/FitnessCenter"
 
 const features = [
   "Log activities with a name and duration",
@@ -15,7 +15,7 @@ const features = [
   "Track total, completed, and pending minutes",
   "Delete individual activities or clear all",
   "Data is saved automatically in your browser",
-];
+]
 
 export function AboutPage() {
   return (
@@ -57,5 +57,5 @@ export function AboutPage() {
         </Paper>
       </Stack>
     </Container>
-  );
+  )
 }

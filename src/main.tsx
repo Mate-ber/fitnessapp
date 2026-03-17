@@ -1,19 +1,19 @@
-import { StrictMode } from "react";
-import { createRoot } from "react-dom/client";
-import { BrowserRouter, Routes, Route } from "react-router";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import CssBaseline from "@mui/material/CssBaseline";
-import { ThemeProvider } from "./context/Theme";
-import { MainLayout } from "./layouts/MainLayout";
-import { SecondaryLayout } from "./layouts/SecondaryLayout";
-import { HomePage } from "./pages/HomePage";
-import { StatsPage } from "./pages/StatsPage";
-import { AboutPage } from "./pages/AboutPage";
+import { StrictMode } from "react"
+import { createRoot } from "react-dom/client"
+import { BrowserRouter, Routes, Route } from "react-router"
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query"
+import CssBaseline from "@mui/material/CssBaseline"
+import { ThemeProvider } from "./context/Theme"
+import { MainLayout } from "./layouts/MainLayout"
+import { SecondaryLayout } from "./layouts/SecondaryLayout"
+import { HomePage } from "./pages/HomePage"
+import { StatsPage } from "./pages/StatsPage"
+import { AboutPage } from "./pages/AboutPage"
 
-const queryClient = new QueryClient();
+const queryClient = new QueryClient()
 
-const root = document.getElementById("root");
-if (!root) throw new Error("Cannot find #root");
+const root = document.getElementById("root")
+if (!root) throw new Error("Cannot find #root")
 
 createRoot(root).render(
   <StrictMode>
@@ -34,4 +34,4 @@ createRoot(root).render(
       </ThemeProvider>
     </QueryClientProvider>
   </StrictMode>,
-);
+)

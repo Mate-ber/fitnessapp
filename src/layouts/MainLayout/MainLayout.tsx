@@ -1,4 +1,4 @@
-import { Outlet, NavLink } from "react-router";
+import { Outlet, NavLink } from "react-router"
 import {
   AppBar,
   Toolbar,
@@ -6,14 +6,14 @@ import {
   Button,
   Box,
   IconButton,
-} from "@mui/material";
-import FitnessCenterIcon from "@mui/icons-material/FitnessCenter";
-import LightModeIcon from "@mui/icons-material/LightMode";
-import DarkModeIcon from "@mui/icons-material/DarkMode";
-import { useTheme } from "../../context/Theme/useTheme";
+} from "@mui/material"
+import FitnessCenterIcon from "@mui/icons-material/FitnessCenter"
+import LightModeIcon from "@mui/icons-material/LightMode"
+import DarkModeIcon from "@mui/icons-material/DarkMode"
+import { useTheme } from "../../context/Theme/useTheme"
 
 export function MainLayout() {
-  const { mode, toggleTheme } = useTheme();
+  const { mode, toggleTheme } = useTheme()
 
   return (
     <Box
@@ -65,5 +65,5 @@ export function MainLayout() {
       </AppBar>
       <Outlet />
     </Box>
-  );
+  )
 }

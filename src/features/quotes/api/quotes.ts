@@ -1,22 +1,22 @@
 export type Quote = {
-  id: number;
-  quote: string;
-  author: string;
-};
+  id: number
+  quote: string
+  author: string
+}
 
 export async function getQuote(): Promise<Quote> {
-  const response = await fetch("https://dummyjson.com/quotes/random");
+  const response = await fetch("https://dummyjson.com/quotes/random")
   if (!response.ok) {
-    const text = await response.text();
-    throw new Error(`Cannot get quote. ${text}`);
+    const text = await response.text()
+    throw new Error(`Cannot get quote. ${text}`)
   }
-  const data = (await response.json()) as Quote;
-  return data;
+  const data = (await response.json()) as Quote
+  return data
 }
 
 export function getErrorMessage(error: unknown): string {
   if (error instanceof Error) {
-    return `Error: ${error.message}`;
+    return `Error: ${error.message}`
   }
-  return "Something went wrong.";
+  return "Something went wrong."
 }

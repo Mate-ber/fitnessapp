@@ -1,12 +1,12 @@
-import { Suspense } from "react";
-import { ErrorBoundary } from "react-error-boundary";
-import { Paper, Typography, Box, CircularProgress } from "@mui/material";
-import FormatQuoteIcon from "@mui/icons-material/FormatQuote";
-import { useQuote } from "../api/useQuote";
-import { getErrorMessage } from "../api/quotes";
+import { Suspense } from "react"
+import { ErrorBoundary } from "react-error-boundary"
+import { Paper, Typography, Box, CircularProgress } from "@mui/material"
+import FormatQuoteIcon from "@mui/icons-material/FormatQuote"
+import { useQuote } from "../api/useQuote"
+import { getErrorMessage } from "../api/quotes"
 
 const QuoteContent: React.FC = () => {
-  const { data: quote } = useQuote();
+  const { data: quote } = useQuote()
 
   return (
     <Box sx={{ textAlign: "center" }}>
@@ -18,8 +18,8 @@ const QuoteContent: React.FC = () => {
         — {quote.author}
       </Typography>
     </Box>
-  );
-};
+  )
+}
 
 export const QuoteCard: React.FC = () => {
   return (
@@ -49,5 +49,5 @@ export const QuoteCard: React.FC = () => {
         </Suspense>
       </ErrorBoundary>
     </Paper>
-  );
-};
+  )
+}

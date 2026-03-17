@@ -1,4 +1,4 @@
-import type { Activity } from "../../../shared/types";
+import type { Activity } from "../../../shared/types"
 import {
   List,
   ListItem,
@@ -9,15 +9,15 @@ import {
   Typography,
   Box,
   Button,
-} from "@mui/material";
-import DeleteIcon from "@mui/icons-material/Delete";
-import TimerIcon from "@mui/icons-material/Timer";
+} from "@mui/material"
+import DeleteIcon from "@mui/icons-material/Delete"
+import TimerIcon from "@mui/icons-material/Timer"
 
 interface Props {
-  activities: Activity[];
-  onDelete: (id: number) => void;
-  onToggle: (id: number) => void;
-  onClearAll: () => void;
+  activities: Activity[]
+  onDelete: (id: number) => void
+  onToggle: (id: number) => void
+  onClearAll: () => void
 }
 
 export function ActivityList({
@@ -29,7 +29,7 @@ export function ActivityList({
   if (activities.length === 0) {
     return (
       <Typography sx={{ mt: 3 }}>No activities yet. Add one above!</Typography>
-    );
+    )
   }
 
   return (
@@ -70,5 +70,5 @@ export function ActivityList({
         ))}
       </List>
     </Paper>
-  );
+  )
 }

@@ -1,18 +1,18 @@
-import { useCallback, useMemo, useState } from "react";
+import { useCallback, useMemo, useState } from "react"
 import {
   createTheme,
   ThemeProvider as MuiThemeProvider,
-} from "@mui/material/styles";
-import { ThemeContext, type ThemeMode } from "./ThemeContext";
+} from "@mui/material/styles"
+import { ThemeContext, type ThemeMode } from "./ThemeContext"
 
 export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
-  const [mode, setMode] = useState<ThemeMode>("dark");
+  const [mode, setMode] = useState<ThemeMode>("dark")
 
   const toggleTheme = useCallback(() => {
-    setMode((prev) => (prev === "dark" ? "light" : "dark"));
-  }, []);
+    setMode((prev) => (prev === "dark" ? "light" : "dark"))
+  }, [])
 
   const muiTheme = useMemo(
     () =>
@@ -32,13 +32,13 @@ export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({
         },
       }),
     [mode],
-  );
+  )
 
-  const context = useMemo(() => ({ mode, toggleTheme }), [mode, toggleTheme]);
+  const context = useMemo(() => ({ mode, toggleTheme }), [mode, toggleTheme])
 
   return (
     <ThemeContext value={context}>
       <MuiThemeProvider theme={muiTheme}>{children}</MuiThemeProvider>
     </ThemeContext>
-  );
-};
+  )
+}
