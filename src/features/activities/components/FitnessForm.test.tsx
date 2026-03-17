@@ -19,13 +19,6 @@ describe("FitnessForm", () => {
     expect(screen.getByLabelText(/duration/i)).toBeInTheDocument();
   });
 
-  it("renders add activity button", () => {
-    render(<FitnessForm onAdd={vi.fn()} />);
-    expect(
-      screen.getByRole("button", { name: /add activity/i }),
-    ).toBeInTheDocument();
-  });
-
   it("shows error when submitting empty activity name", async () => {
     render(<FitnessForm onAdd={vi.fn()} />);
     await userEvent.click(

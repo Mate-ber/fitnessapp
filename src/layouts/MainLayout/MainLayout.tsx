@@ -10,7 +10,7 @@ import {
 import FitnessCenterIcon from "@mui/icons-material/FitnessCenter";
 import LightModeIcon from "@mui/icons-material/LightMode";
 import DarkModeIcon from "@mui/icons-material/DarkMode";
-import { useTheme } from "../context/useTheme";
+import { useTheme } from "../../context/Theme/useTheme";
 
 export function MainLayout() {
   const { mode, toggleTheme } = useTheme();
@@ -63,7 +63,6 @@ export function MainLayout() {
           </Box>
         </Toolbar>
       </AppBar>
-
       <Outlet />
     </Box>
   );

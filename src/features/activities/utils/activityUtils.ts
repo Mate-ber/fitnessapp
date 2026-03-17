@@ -1,4 +1,4 @@
-import type { Activity } from "../../../types";
+import type { Activity } from "../../../shared/types";
 
 export function getTotalDuration(activities: Activity[]): number {
   return activities.reduce((sum, a) => sum + a.duration, 0);

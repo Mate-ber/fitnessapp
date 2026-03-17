@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
-import type { Activity } from "../../../types";
+import type { Activity } from "../../../shared/types";
 import {
   getTotalDuration,
   getPendingDuration,

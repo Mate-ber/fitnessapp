@@ -1,5 +1,5 @@
 import { createContext } from "react";
-import type { Activity, Stats } from "../../../types";
+import type { Activity, Stats } from "../../../shared/types";
 
 export type ActivitiesContextValue = {
   activities: Activity[];

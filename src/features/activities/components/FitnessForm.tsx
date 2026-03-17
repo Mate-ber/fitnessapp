@@ -8,7 +8,7 @@ import {
   Alert,
   Paper,
 } from "@mui/material";
-import type { Activity } from "../../../types";
+import type { Activity } from "../../../shared/types";
 
 interface Props {
   onAdd: (data: Omit<Activity, "id">) => void;
@@ -46,22 +46,24 @@ export function FitnessForm({ onAdd }: Props) {
       <form onSubmit={handleSubmit}>
         <Stack spacing={2}>
           {error && <Alert severity="error">{error}</Alert>}
-
           <TextField
             label="Activity"
             value={activity}
             onChange={(e) => setActivity(e.target.value)}
             fullWidth
           />
-
           <TextField
             label="Duration (minutes)"
             type="number"
             value={duration}
             onChange={(e) => setDuration(e.target.value)}
             fullWidth
+            inputProps={{ style: { MozAppearance: "textfield" } }}
+            sx={{
+              "& input::-webkit-outer-spin-button, & input::-webkit-inner-spin-button":
+                { display: "none" },
+            }}
           />
-
           <FormControlLabel
             control={
               <Checkbox
@@ -71,7 +73,6 @@ export function FitnessForm({ onAdd }: Props) {
             }
             label="Mark as completed"
           />
-
           <Button type="submit" variant="contained" color="secondary">
             Add Activity
           </Button>

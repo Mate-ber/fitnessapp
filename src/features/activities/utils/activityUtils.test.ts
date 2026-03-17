@@ -4,7 +4,7 @@ import {
   getPendingDuration,
   getMotivationalMessage,
 } from "./activityUtils";
-import type { Activity } from "../../../types";
+import type { Activity } from "../../../shared/types";
 
 const activities: Activity[] = [
   { id: 1, activity: "Run", duration: 30, completed: true },

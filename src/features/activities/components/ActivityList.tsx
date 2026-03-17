@@ -1,4 +1,4 @@
-import type { Activity } from "../../../types";
+import type { Activity } from "../../../shared/types";
 import {
   List,
   ListItem,
@@ -50,7 +50,6 @@ export function ActivityList({
             }
           >
             <Checkbox checked={a.completed} onChange={() => onToggle(a.id)} />
-
             <ListItemText
               primary={a.activity}
               secondary={

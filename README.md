@@ -9,6 +9,14 @@ A simple personal fitness tracker web app with React, TypeScript, and Material U
 - Can see how minutes we worked out for and home much time is left
 - Have a page which give breakdown by percentage of activities done
 
+## Potential Features
+
+- Weekly/monthly progress charts
+- Activity categories (cardio, strength, flexibility)
+- Goal setting and streak tracking
+- Push notifications for workout reminders
+
+
 # Getting Started
 
 ## Prerequisites

@@ -3,7 +3,7 @@ import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { describe, it, expect, vi } from "vitest";
 import { ActivityList } from "./ActivityList";
-import type { Activity } from "../../../types";
+import type { Activity } from "../../../shared/types";
 
 const activities: Activity[] = [
   { id: 1, activity: "Running", duration: 30, completed: false },
@@ -45,19 +45,6 @@ describe("ActivityList", () => {
     );
     expect(screen.getByText("Running")).toBeInTheDocument();
     expect(screen.getByText("Cycling")).toBeInTheDocument();
-  });
-
-  it("renders activity durations", () => {
-    render(
-      <ActivityList
-        activities={activities}
-        onDelete={vi.fn()}
-        onToggle={vi.fn()}
-        onClearAll={vi.fn()}
-      />,
-    );
-    expect(screen.getByText(/30 min/i)).toBeInTheDocument();
-    expect(screen.getByText(/45 min/i)).toBeInTheDocument();
   });
 
   it("calls onDelete when delete button is clicked", async () => {

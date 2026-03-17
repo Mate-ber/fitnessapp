@@ -2,8 +2,8 @@ import "@testing-library/jest-dom";
 import { render } from "@testing-library/react";
 import { describe, it, expect, vi, beforeEach } from "vitest";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { getQuote, getErrorMessage } from "./quotes.ts";
-import { QuoteCard } from "../components/QuoteCard.tsx";
+import { getQuote, getErrorMessage } from "./quotes";
+import { QuoteCard } from "../components/QuoteCard";
 
 const mockQuote = { id: 1, quote: "Test quote", author: "Test Author" };
 
@@ -36,7 +36,9 @@ describe("getErrorMessage", () => {
 
 describe("QuoteCard", () => {
   it("renders without crashing", () => {
-    const queryClient = new QueryClient();
+    const queryClient = new QueryClient({
+      defaultOptions: { queries: { retry: false } },
+    });
     const { container } = render(
       <QueryClientProvider client={queryClient}>
         <QuoteCard />
